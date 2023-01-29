@@ -1,0 +1,130 @@
+[
+  {
+    "title": "Крановщик",
+    "id": "Crane_operator"
+  },
+  {
+    "title": "Рабочий плиточник",
+    "id": "Tiler"
+  },
+  {
+    "title": "Топ менеджер в международной компании",
+    "id": "Top_manager_in_international_company"
+  },
+  {
+    "title": "Продавец в магазине",
+    "id": "Store_clerk"
+  },
+  {
+    "title": "Менеджер по продажам",
+    "id": "Sales_manager"
+  },
+  {
+    "title": "Врач в больнице",
+    "id": "Doctor_at_the_hospital"
+  },
+  {
+    "title": "Юрист консультант",
+    "id": "Legal_consultant"
+  },
+  {
+    "title": "Прораб",
+    "id": "Foreman"
+  },
+  {
+    "title": "Дизайнер макетчик",
+    "id": "Model_designer"
+  },
+  {
+    "title": "Директор чужой фирмы",
+    "id": "Director_of_another_company"
+  },
+  {
+    "title": "Сторож",
+    "id": "Watchman"
+  },
+  {
+    "title": "Патрульный постовой",
+    "id": "Patrolman"
+  },
+  {
+    "title": "Рекламный агент",
+    "id": "Publicity_agent"
+  },
+  {
+    "title": "ГАИшник",
+    "id": "Traffic_policeman"
+  },
+  {
+    "title": "Помощник прокурора",
+    "id": "Assistant_prosecutor"
+  },
+  {
+    "title": "Водитель-дальнобольщик",
+    "id": "Trucker"
+  },
+  {
+    "title": "Руководитель отдела",
+    "id": "Department_head"
+  },
+  {
+    "title": "Участковый",
+    "id": "Precinct"
+  },
+  {
+    "title": "Хирург",
+    "id": "Surgeon"
+  },
+  {
+    "title": "Следователь",
+    "id": "Detective"
+  },
+  {
+    "title": "Таксист",
+    "id": "Taxi_driver"
+  },
+  {
+    "title": "Водитель трамвая",
+    "id": "Tram_driver"
+  },
+  {
+    "title": "Секретарша",
+    "id": "Secretary"
+  },
+  {
+    "title": "Преподаватель",
+    "id": "Teacher"
+  },
+  {
+    "title": "Налоговый инспектор",
+    "id": "Tax_inspector"
+  },
+  {
+    "title": "Помощник депутата",
+    "id": "Deputy_assistant"
+  },
+  {
+    "title": "Адвокат",
+    "id": "Lawyer"
+  },
+  {
+    "title": "Кладовщик-учетчик",
+    "id": "Storekeeper_accounter"
+  },
+  {
+    "title": "Главный бухгалтер",
+    "id": "Chief_accountant"
+  },
+  {
+    "title": "Продавец-консультант",
+    "id": "Shop_assistant"
+  },
+  {
+    "title": "Корреспондент",
+    "id": "Correspondent"
+  },
+  {
+    "title": "Редактор газеты",
+    "id": "Newspaper_editor"
+  }
+]
