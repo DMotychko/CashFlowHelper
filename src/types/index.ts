@@ -25,7 +25,7 @@ export type Loan = {
 
 export type Apartment = IncomeUnit & {
     type: string,
-    loanId: string
+    loanId?: string
 };
 
 export type ChildrenExpense = {
