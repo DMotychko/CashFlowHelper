@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState: boolean = false;
+const initialState = false;
 
 const slice = createSlice({
     name: 'isFired',
