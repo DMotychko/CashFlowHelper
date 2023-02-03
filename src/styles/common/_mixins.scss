@@ -1,0 +1,7 @@
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function rem($sizePx, $baseSize: 16px) {
+    @return #{stripUnit($sizePx) / stripUnit($baseSize)}rem;
+}
