@@ -1,11 +1,13 @@
 import React from 'react';
-import MainPage from './pages/MainPage';
 
+import './styles/App.scss';
 
 function App() {
   return (
-    <MainPage />
-  );
+    <div className="App">
+     
+    </div>
+  )
 }
 
 export default App;
