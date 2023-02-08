@@ -1,26 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Helmet } from 'react-helmet';
+import { appName } from './common/config';
+import MainPage from './pages/MainPage';
 
 import './styles/App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <title>{appName}</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Helmet>
+      <MainPage />
+    </>
   )
 }
 

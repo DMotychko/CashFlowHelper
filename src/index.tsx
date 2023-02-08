@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import CSSBaseline from '@mui/material/CssBaseline';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './store/store';
@@ -15,6 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <React.StrictMode>
+      <CSSBaseline enableColorScheme />
       <App />
     </React.StrictMode>
   </Provider>

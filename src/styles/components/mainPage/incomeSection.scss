@@ -1,0 +1,24 @@
+@import '../../common/mixins';
+
+.ch-income-section {
+    height: rem(80px);
+
+    .container {
+        height: 100%;
+
+        .grid-container {
+            align-items: center;
+            height: 100%;
+
+            .income-title,
+            .income-value {
+                display: inline-block;
+                width: 100%;
+            }
+
+            .income-value {
+                text-align: right;
+            }
+        }
+    }
+}
