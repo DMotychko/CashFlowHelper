@@ -15,6 +15,6 @@ const slice = createSlice({
 
 export const selectChildrenExpense = (state: ChildrenExpense) => state.childrenCount * state.expenseOnChild;
 
-export const { add } = slice.actions;
+export const { add: addChild } = slice.actions;
 
 export default slice.reducer;
