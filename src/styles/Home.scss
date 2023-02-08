@@ -1,13 +1,14 @@
 @import './common/_mixins.scss';
 
-.container {
-    margin-top: rem(120);
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    .field {
-        width: rem(300);
-        margin-bottom: rem(15);
+.ch-home-page {
+    margin-top: rem(100);
+    .ch-grid-fields {
+        justify-content: center;
+        .ch-stack-fields {
+            align-items: center;
+            .ch-field {
+                width: 100%;
+            }
+        }
     }
 }
