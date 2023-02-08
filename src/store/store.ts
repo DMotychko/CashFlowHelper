@@ -4,7 +4,7 @@ import bigBusinessesReducer from "./bigBusinessesSlice";
 import childrenReducer from "./childrenSlice";
 import expensesReducer from "./expensesSlice";
 import isFiredReducer from "./isFiredSlice";
-import jobReducer from "./jobSlice";
+import jobReducer, { setJob } from "./jobSlice";
 import loansReducer from "./loansSlice";
 import smallBusinessesReducer from "./smallBusinessesSlice";
 import userNameReducer from "./userNameSlice";
@@ -25,7 +25,12 @@ export type StoreState = ReturnType<typeof reducer>;
 
 export const setupStore = (preloadedState?: PreloadedState<StoreState>) => configureStore({
     reducer: reducer,
-    preloadedState
+    preloadedState,
+    devTools: {
+        actionCreators: {
+            setJob
+        }
+    }
 });
 
 type AppState = ReturnType<typeof setupStore>;
