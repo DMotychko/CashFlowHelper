@@ -9,7 +9,7 @@ import { formatMoney } from '../../helpers/common';
 
 import '../../styles/components/mainPage/incomeSection.scss';
 
-const IncomeSection = () => {
+const IncomeSection: React.FunctionComponent = () => {
     const income = useSelector(selectUserIncome);
 
     return (
