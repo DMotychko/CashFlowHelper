@@ -12,27 +12,27 @@ import '../styles/Home.scss'
 function Home() {
     return (
         <Container fixed className="ch-home-page">
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="ch-grid-fields">
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="grid-fields">
                 <Grid item xs={4} sm={6} md={6} >
-                    <Stack spacing={2} className="ch-stack-fields">
+                    <Stack spacing={2} className="stack-fields">
                         <Typography variant="h3" gutterBottom >
                             Вітаємо!
                         </Typography>
                         <TextField 
                             label="Введіть ім'я" 
                             variant="outlined" 
-                            className="ch-field"
+                            className="field"
                         />
                         <Autocomplete
                             disablePortal
                             options={[]}
-                            className="ch-field"
+                            className="field"
                             renderInput={(params) => <TextField {...params} label="Мрія" />}
                         />
                         <Autocomplete
                             disablePortal
                             options={[]}
-                            className="ch-field"
+                            className="field"
                             renderInput={(params) => <TextField {...params} label="Професія" />}
                         />
                         <Button variant="contained" size="large">
