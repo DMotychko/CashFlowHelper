@@ -10,18 +10,16 @@ import MenuButton from '../components/mainPage/MenuButton';
 const pageName = 'Головна';
 
 const MainPage: React.FunctionComponent = () => {
-    
+  return (
+    <Container className="ch-main-page">
+      <Helmet>
+        <title>{getTitle(pageName)}</title>
+      </Helmet>
 
-    return (
-        <Container className='ch-main-page'>
-            <Helmet>
-                <title>{getTitle(pageName)}</title>
-            </Helmet>
-            
-            <MenuButton />
-            <IncomeSection />
-        </Container>
-    );
+      <MenuButton />
+      <IncomeSection />
+    </Container>
+  );
 };
 
 export default MainPage;

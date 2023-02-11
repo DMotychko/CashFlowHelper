@@ -14,60 +14,58 @@ import { mapActionToSpeedDialAction } from '../../helpers/renderers';
 import type { Action } from '../../types/common';
 
 const MenuButton: React.FunctionComponent = () => {
-    const isUserFired = useSelector(store => store.isFired);
-    const dispatch = useDispatch();
+  const isUserFired = useSelector((store) => store.isFired);
+  const dispatch = useDispatch();
 
-    const isTouchDevice = useMediaQuery('(hover: none)');
+  const isTouchDevice = useMediaQuery('(hover: none)');
 
-    const toggleIsFiredCallback = useCallback(() => dispatch(toggleIsFired()), [dispatch]);
+  const toggleIsFiredCallback = useCallback(() => dispatch(toggleIsFired()), [dispatch]);
 
-    const actions = useMemo<Action[]>(() => {
-        const toggleIsFiredAction: Partial<Action> = isUserFired ? {
-            title: 'Працевлаштуватися',
-            icon: <WorkIcon />
-        } : {
-            title: 'Звільнитися',
-            icon: <WorkOffIcon />
+  const actions = useMemo<Action[]>(() => {
+    const toggleIsFiredAction: Partial<Action> = isUserFired
+      ? {
+          title: 'Працевлаштуватися',
+          icon: <WorkIcon />
+        }
+      : {
+          title: 'Звільнитися',
+          icon: <WorkOffIcon />
         };
 
-        return [
-            {
-                title: 'Бізнеси',
-                icon: <StoreIcon />,
-                isTooltipOpen: isTouchDevice
-            },
-            {
-                title: 'Квартири',
-                icon: <ApartmentIcon />,
-                isTooltipOpen: isTouchDevice
-            },
-            {
-                title: 'Банк',
-                icon: <AccountBalanceIcon />,
-                isTooltipOpen: isTouchDevice
-            },
-            {
-                title: 'Поповнення в сім\'ї',
-                icon: <ChildFriendlyIcon />,
-                isTooltipOpen: isTouchDevice 
-            },
-            {
-                ...toggleIsFiredAction,
-                clickHandler: toggleIsFiredCallback,
-                isTooltipOpen: isTouchDevice
-            }
-        ] as Action[];
-    }, [isUserFired]);
+    return [
+      {
+        title: 'Бізнеси',
+        icon: <StoreIcon />,
+        isTooltipOpen: isTouchDevice
+      },
+      {
+        title: 'Квартири',
+        icon: <ApartmentIcon />,
+        isTooltipOpen: isTouchDevice
+      },
+      {
+        title: 'Банк',
+        icon: <AccountBalanceIcon />,
+        isTooltipOpen: isTouchDevice
+      },
+      {
+        title: "Поповнення в сім'ї",
+        icon: <ChildFriendlyIcon />,
+        isTooltipOpen: isTouchDevice
+      },
+      {
+        ...toggleIsFiredAction,
+        clickHandler: toggleIsFiredCallback,
+        isTooltipOpen: isTouchDevice
+      }
+    ] as Action[];
+  }, [isUserFired]);
 
-    return (
-        <SpeedDial 
-            className='ch-menu-button' 
-            ariaLabel='Меню'
-            icon={<SpeedDialIcon />}
-        >
-            {actions.map(action => mapActionToSpeedDialAction(action, { key: action.title }))}
-        </SpeedDial>
-    );
+  return (
+    <SpeedDial className="ch-menu-button" ariaLabel="Меню" icon={<SpeedDialIcon />}>
+      {actions.map((action) => mapActionToSpeedDialAction(action, { key: action.title }))}
+    </SpeedDial>
+  );
 };
 
 export default MenuButton;
