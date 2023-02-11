@@ -1,34 +1,34 @@
 export type Job = {
-    title: string,
-    income: number
+  title: string;
+  income: number;
 };
 
 export type Expense = {
-    id: string,
-    title: string,
-    outcome: number
+  id: string;
+  title: string;
+  outcome: number;
 };
 
 type IncomeUnit = {
-    id: string,
-    income: number
+  id: string;
+  income: number;
 };
 
 export type Business = IncomeUnit;
 
 export type Loan = {
-    id: string,
-    title: string,
-    sum: number,
-    expenseId: string
+  id: string;
+  title: string;
+  sum: number;
+  expenseId: string;
 };
 
 export type Apartment = IncomeUnit & {
-    type: string,
-    loanId?: string
+  type: string;
+  loanId?: string;
 };
 
 export type ChildrenExpense = {
-    childrenCount: number,
-    expenseOnChild: number
-}
+  childrenCount: number;
+  expenseOnChild: number;
+};
