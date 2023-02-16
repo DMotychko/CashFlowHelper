@@ -9,23 +9,27 @@ import { formatMoney } from '../../helpers/common';
 
 import '../../styles/components/mainPage/incomeSection.scss';
 
-const IncomeSection = () => {
-    const income = useSelector(selectUserIncome);
+const IncomeSection: React.FunctionComponent = () => {
+  const income = useSelector(selectUserIncome);
 
-    return (
-        <Paper className='ch-income-section' elevation={4} square>
-            <Container className='container'> 
-                <Grid className='grid-container' container columns={4}>
-                    <Grid item xs={2}>
-                        <Typography className='income-title' variant='h5' component='span'>Прибуток</Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Typography className='income-value' variant='h5' component='span'>{formatMoney(income)}</Typography>
-                    </Grid>
-                </Grid>
-            </Container>
-        </Paper>
-    );
+  return (
+    <Paper className="ch-income-section" elevation={4} square>
+      <Container className="container">
+        <Grid className="grid-container" container columns={4}>
+          <Grid item xs={2}>
+            <Typography className="income-title" variant="h5" component="span">
+              Прибуток
+            </Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <Typography className="income-value" variant="h5" component="span">
+              {formatMoney(income)}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    </Paper>
+  );
 };
 
 export default IncomeSection;

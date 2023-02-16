@@ -1,7 +1,16 @@
+@import '../common/mixins';
+
 .ch-main-page {
     .ch-income-section {
         position: fixed;
-        width: 100%;
         bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .ch-menu-button {
+        position: fixed;
+        bottom: rem(96px);
+        right: rem(16px);
     }
 }
