@@ -20,9 +20,8 @@ function Header() {
     const jobTitle = useMemo(() => {
         if(isFired) {
             return "Безробітний (0$)"
-        } else {
-            return `${job.title} (${job.income}$)`
-        }
+        } 
+        return `${job.title} (${job.income}$)`
     }, [isFired]);
 
     return (
