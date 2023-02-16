@@ -7,9 +7,9 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 
-import '../styles/Home.scss'
+import '../styles/pages/homePage.scss'
 
-function Home() {
+function HomePage() {
     return (
         <Container fixed className="ch-home-page">
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="grid-fields">
@@ -45,4 +45,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default HomePage;
