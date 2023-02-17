@@ -1,10 +1,10 @@
 import React, {useMemo} from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { AppBar, Toolbar } from '@mui/material';
+import { AppBar } from '@mui/material';
+import { Toolbar } from '@mui/material';
 import { useSelector } from '../../store/hooks';
 import type { StoreState } from '../../store/store';
-
 
 import '../../styles/components/mainPage/header.scss'
 

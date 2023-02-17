@@ -5,7 +5,9 @@ import CSSBaseline from '@mui/material/CssBaseline';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './store/store';
-import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material';
+import { responsiveFontSizes } from '@mui/material';
 
 import './styles/index.scss';
 
