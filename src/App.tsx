@@ -16,6 +16,6 @@ function App() {
       <MainPage />
     </>
   );
-};
+}
 
 export default App;

@@ -16,7 +16,6 @@ const MainPage: React.FunctionComponent = () => {
       <Helmet>
         <title>{getTitle(pageName)}</title>
       </Helmet>
-
       <Header />
       <MenuButton />
       <IncomeSection />

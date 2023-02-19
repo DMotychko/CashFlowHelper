@@ -1,43 +1,41 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { AppBar } from '@mui/material';
-import { Toolbar } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
 import { useSelector } from '../../store/hooks';
-import type { StoreState } from '../../store/store';
+import { selectUserName } from '../../store/userNameSlice';
+import { selectIsFired } from '../../store/isFiredSlice';
+import { selectJob } from '../../store/jobSlice';
 
-import '../../styles/components/mainPage/header.scss'
+import '../../styles/components/mainPage/header.scss';
 
-const selectUserName = (state: StoreState) => state.userName;
-const selectIsFired = (state: StoreState) => state.isFired;
-const selectJob = (state: StoreState) => state.job;
+const Header: React.FunctionComponent = () => {
+  const userName = useSelector(selectUserName);
+  const isFired = useSelector(selectIsFired);
+  const job = useSelector(selectJob);
 
-function Header() {
-    const userName = useSelector(selectUserName);
-    const isFired = useSelector(selectIsFired);
-    const job = useSelector(selectJob);
+  const jobTitle = useMemo(() => {
+    if (isFired) {
+      return 'Безробітний (0$)';
+    }
 
-    const jobTitle = useMemo(() => {
-        if(isFired) {
-            return "Безробітний (0$)"
-        } 
-        return `${job.title} (${job.income}$)`
-    }, [isFired]);
+    return `${job.title} (${job.income}$)`;
+  }, [isFired, job]);
 
-    return (
-        <AppBar className='ch-header'>
-            <Toolbar className='welcome'>
-                <Stack spacing={0.3}>
-                    <Typography variant="h5">
-                        Привіт, {userName}!
-                    </Typography>
-                    <Typography variant="subtitle2">
-                        Твоя професія - {jobTitle}
-                    </Typography>
-                </Stack>
-            </Toolbar>
-        </AppBar>
-    );
-}
+  return (
+    <AppBar className="ch-header">
+      <Container>
+        <Toolbar disableGutters className="welcome">
+          <Stack spacing={0.3}>
+            <Typography variant="h5">Привіт, {userName}!</Typography>
+            <Typography variant="subtitle2">Твоя професія - {jobTitle}</Typography>
+          </Stack>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
 
 export default Header;
