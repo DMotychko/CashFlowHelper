@@ -1,0 +1,9 @@
+@import '../../common/mixins';
+
+.ch-header {
+    height: rem(70);
+    .welcome {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}

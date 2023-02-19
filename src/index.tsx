@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import CSSBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './store/store';
@@ -10,12 +11,17 @@ import './styles/index.scss';
 
 const store = setupStore();
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <CSSBaseline enableColorScheme />
-      <App />
+      <ThemeProvider theme={theme}>
+        <CSSBaseline enableColorScheme />
+        <App />
+      </ThemeProvider>
     </React.StrictMode>
   </Provider>
 );
