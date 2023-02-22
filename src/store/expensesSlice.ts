@@ -12,6 +12,10 @@ const slice = createSlice({
       reducer: (state, action: PayloadAction<Expense>) => adapter.addOne(state, action.payload),
       prepare: (expense: Expense) => ({ payload: expense })
     },
+    addMany: {
+      reducer: (state, action: PayloadAction<Expense[]>) => adapter.addMany(state, action.payload),
+      prepare: (expenses: Expense[]) => ({ payload: expenses })
+    },
     remove: {
       reducer: (state, action: PayloadAction<string>) => adapter.removeOne(state, action.payload),
       prepare: (expenseId: string) => ({ payload: expenseId })
@@ -21,6 +25,6 @@ const slice = createSlice({
 
 export const { selectAll: selectAllExpenses, selectById: selectExpenseById, selectIds: selectExpenseIds } = adapter.getSelectors();
 
-export const { add: addExpense, remove: removeExpense } = slice.actions;
+export const { add: addExpense, addMany: addExpenses, remove: removeExpense } = slice.actions;
 
 export default slice.reducer;

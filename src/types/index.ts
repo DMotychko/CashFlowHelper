@@ -32,3 +32,8 @@ export type ChildrenExpense = {
   childrenCount: number;
   expenseOnChild: number;
 };
+
+export type Dream = {
+  title: string;
+  price: number;
+};
