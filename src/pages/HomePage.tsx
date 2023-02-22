@@ -15,7 +15,7 @@ import type { SignInFormData } from '../types/homePage';
 import type { Card, CardExpense } from '../types/dictionaries';
 import type { Expense, Loan } from '../types';
 
-import '../styles/Home.scss';
+import '../styles/pages/homePage.scss';
 
 const mapCardExpenseToStateExpense = (expense: CardExpense) => ({
     ...expense,
@@ -49,7 +49,7 @@ type Props = {
     onStart: () => void;
 };
 
-const Home: React.FunctionComponent<Props> = ({ onStart }) => {
+const HomePage: React.FunctionComponent<Props> = ({ onStart }) => {
     const dispatch = useDispatch();
 
     const onSignInSubmit = useCallback((signInForm: SignInFormData) => {
@@ -81,4 +81,4 @@ const Home: React.FunctionComponent<Props> = ({ onStart }) => {
     );
 };
 
-export default Home;
+export default HomePage;

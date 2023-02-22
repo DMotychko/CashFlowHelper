@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { StoreState } from './store';
 
 const initialState = '';
 
@@ -13,6 +14,8 @@ const slice = createSlice({
     }
   }
 });
+
+export const selectUserName = (state: StoreState) => state.userName;
 
 export const { set: setUserName } = slice.actions;
 
