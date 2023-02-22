@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { appName } from './common/config';
 import Home from './pages/Home';
+import MainPage from './pages/MainPage';
 
 import './styles/App.scss';
 
 function App() {
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const onStart = useCallback(() => setGameStarted(true), [setGameStarted]);
+
   return (
     <>
-      <Home/>
       <Helmet>
         <title>{appName}</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Helmet>
+      {gameStarted ? <MainPage /> : <Home onStart={onStart} />}
     </>
   );
 };

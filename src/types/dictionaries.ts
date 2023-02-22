@@ -1,14 +1,11 @@
-import type { Job } from ".";
+import type { Dream, Job } from ".";
 
 export type JobOption = {
     id: string;
     title: string;
 };
 
-export type DreamOption = {
-    title: string;
-    price: number;
-}
+export type DreamOption = Dream;
 
 export type CardExpense = {
     title: string;

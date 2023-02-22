@@ -2,6 +2,7 @@ import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolki
 import apartmentsReducer, { addApartment, removeApartment } from './apartmentsSlice';
 import bigBusinessesReducer, { addBigBusiness } from './bigBusinessesSlice';
 import childrenReducer, { addChild } from './childrenSlice';
+import dreamReducer, { setDream } from './dreamSlice';
 import expensesReducer, { addExpense, removeExpense } from './expensesSlice';
 import isFiredReducer, { toggleIsFired } from './isFiredSlice';
 import jobReducer, { setJob } from './jobSlice';
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   loans: loansReducer,
   apartments: apartmentsReducer,
   smallBusinesses: smallBusinessesReducer,
-  bigBusinesses: bigBusinessesReducer
+  bigBusinesses: bigBusinessesReducer,
+  dream: dreamReducer
 });
 
 export type StoreState = ReturnType<typeof reducer>;
@@ -41,7 +43,8 @@ export const setupStore = (preloadedState?: PreloadedState<StoreState>) =>
         removeApartment,
         addSmallBusiness,
         expandSmallBusiness,
-        addBigBusiness
+        addBigBusiness,
+        setDream
       }
     }
   });
