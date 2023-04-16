@@ -12,7 +12,9 @@ const slice = createSlice({
       ++state.childrenCount;
     },
     setExpense: {
-      reducer: (state, action: PayloadAction<number>) => { state.expenseOnChild = action.payload },
+      reducer: (state, action: PayloadAction<number>) => {
+        state.expenseOnChild = action.payload;
+      },
       prepare: (expenseOnChild: number) => ({ payload: expenseOnChild })
     }
   }

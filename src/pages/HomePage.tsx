@@ -18,67 +18,70 @@ import type { Expense, Loan } from '../types';
 import '../styles/pages/homePage.scss';
 
 const mapCardExpenseToStateExpense = (expense: CardExpense) => ({
-    ...expense,
-    id: uniqueId()
+  ...expense,
+  id: uniqueId()
 });
 
 const mapCardToStore = (card: Card) => {
-    const expenses = card.expenses.map<Expense>(mapCardExpenseToStateExpense);
+  const expenses = card.expenses.map<Expense>(mapCardExpenseToStateExpense);
 
-    const loans: Loan[] = [];
-    card.loans?.forEach(loan => {
-        const expense = mapCardExpenseToStateExpense(loan.expense);
-        expenses.push(expense);
-        loans.push({
-            id: uniqueId(),
-            title: loan.title,
-            sum: loan.sum,
-            expenseId: expense.id
-        });
+  const loans: Loan[] = [];
+  card.loans?.forEach((loan) => {
+    const expense = mapCardExpenseToStateExpense(loan.expense);
+    expenses.push(expense);
+    loans.push({
+      id: uniqueId(),
+      title: loan.title,
+      sum: loan.sum,
+      expenseId: expense.id
     });
+  });
 
-    return {
-        job: card.job,
-        childExpense: card.childExpense,
-        loans,
-        expenses
-    };
+  return {
+    job: card.job,
+    childExpense: card.childExpense,
+    loans,
+    expenses
+  };
 };
 
 type Props = {
-    onStart: () => void;
+  onStart: () => void;
 };
 
 const HomePage: React.FunctionComponent<Props> = ({ onStart }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const onSignInSubmit = useCallback((signInForm: SignInFormData) => {
-        const card = getCard(signInForm.job.id);
-        const { job, childExpense, loans, expenses } = mapCardToStore(card);
+  const onSignInSubmit = useCallback(
+    (signInForm: SignInFormData) => {
+      const card = getCard(signInForm.job.id);
+      const { job, childExpense, loans, expenses } = mapCardToStore(card);
 
-        const actions = [
-            setUserName(signInForm.userName),
-            setDream(signInForm.dream),
-            setJob(job),
-            setExpenseOnChild(childExpense),
-            addLoans(loans),
-            addExpenses(expenses)
-        ];
-        
-        actions.forEach(dispatch);
+      const actions = [
+        setUserName(signInForm.userName),
+        setDream(signInForm.dream),
+        setJob(job),
+        setExpenseOnChild(childExpense),
+        addLoans(loans),
+        addExpenses(expenses)
+      ];
 
-        onStart();
-    }, [dispatch]);
+      actions.forEach(dispatch);
 
-    return (
-        <Container fixed className="ch-home-page">
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="grid-fields">
-                <Grid item xs={4} sm={6} md={6} >
-                    <SignInForm onSubmit={onSignInSubmit} />
-                </Grid>
-            </Grid>
-        </Container>
-    );
+      onStart();
+    },
+    [dispatch]
+  );
+
+  return (
+    <Container fixed className="ch-home-page">
+      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="grid-fields">
+        <Grid item xs={4} sm={6} md={6}>
+          <SignInForm onSubmit={onSignInSubmit} />
+        </Grid>
+      </Grid>
+    </Container>
+  );
 };
 
 export default HomePage;
