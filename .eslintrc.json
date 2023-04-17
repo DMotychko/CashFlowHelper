@@ -16,5 +16,8 @@
       "version": "detect"
     }
   },
-  "rules": {}
+  "rules": {
+    "react/display-name": "off",
+    "react/prop-types": "off"
+  }
 }
