@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
@@ -54,9 +53,6 @@ const SignInForm: React.FunctionComponent<Props> = ({ onSubmit }) => {
 
   return (
     <Stack component="form" noValidate onSubmit={handleSubmit(onSubmit)} spacing={0} className="ch-sign-in-form">
-      <Typography variant="h3" gutterBottom>
-        Вітаємо!
-      </Typography>
       <Controller
         name="userName"
         control={control}
