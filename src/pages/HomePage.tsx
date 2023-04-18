@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { uniqueId } from 'lodash';
 import { useDispatch, useSelector } from '../store/hooks';
-import { setUserName } from '../store/userNameSlice';
+import { selectUserName, setUserName } from '../store/userNameSlice';
 import { setDream } from '../store/dreamSlice';
 import { setJob } from '../store/jobSlice';
 import { setExpenseOnChild } from '../store/childrenSlice';
@@ -57,7 +57,7 @@ type Props = {
 const HomePage: React.FunctionComponent<Props> = ({ onStart }) => {
   const dispatch = useDispatch();
 
-  const userName = useSelector((state) => state.userName);
+  const userName = useSelector(selectUserName);
 
   const onSignInSubmit = useCallback(
     (signInForm: SignInFormData) => {

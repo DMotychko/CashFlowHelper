@@ -1,8 +1,11 @@
 @import '../common/_mixins.scss';
 
 .ch-home-page {
-    margin-top: rem(100);
-    .grid-fields {
-        justify-content: center;
+  margin-top: rem(100);
+  .grid-fields {
+    justify-content: center;
+    .ch-sign-in-form {
+      align-self: stretch;
     }
+  }
 }
