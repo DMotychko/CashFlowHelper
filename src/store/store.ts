@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import hardSet from 'redux-persist/es/stateReconciler/hardSet';
 import apartmentsReducer, { addApartment, removeApartment } from './apartmentsSlice';
 import bigBusinessesReducer, { addBigBusiness } from './bigBusinessesSlice';
 import childrenReducer, { addChild } from './childrenSlice';
@@ -12,15 +11,19 @@ import jobReducer, { setJob } from './jobSlice';
 import loansReducer, { addLoan, removeLoan } from './loansSlice';
 import smallBusinessesReducer, { addSmallBusiness, expandSmallBusiness } from './smallBusinessesSlice';
 import userNameReducer, { setUserName } from './userNameSlice';
-import { persistStoreKey, persistStorePrefix } from '../common/config';
+import modalsReducer, { openModal, closeModal } from './modalsSlice';
+import { persistStoreKey } from '../common/config';
 import actions from './actions/actions';
 import type { AnyAction, PreloadedState, Reducer } from '@reduxjs/toolkit';
 import type { PersistConfig } from 'redux-persist';
 
+const persistStorePrefix = 'persist';
+
 const persistConfig: PersistConfig<StoreState> = {
   key: persistStoreKey,
+  version: 1,
   storage,
-  stateReconciler: hardSet
+  blacklist: ['modals']
 };
 
 const appReducer = combineReducers({
@@ -33,7 +36,8 @@ const appReducer = combineReducers({
   apartments: apartmentsReducer,
   smallBusinesses: smallBusinessesReducer,
   bigBusinesses: bigBusinessesReducer,
-  dream: dreamReducer
+  dream: dreamReducer,
+  modals: modalsReducer
 });
 
 const rootReducer: Reducer<StoreState, AnyAction> = (state, action) => {
@@ -54,6 +58,13 @@ export const setupStore = (preloadedState?: PreloadedState<StoreState>) =>
   configureStore({
     reducer: persistedReducer,
     preloadedState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          ignoredActionPaths: ['payload.props']
+        }
+      }),
     devTools: {
       actionCreators: {
         setUserName,
@@ -69,7 +80,9 @@ export const setupStore = (preloadedState?: PreloadedState<StoreState>) =>
         addSmallBusiness,
         expandSmallBusiness,
         addBigBusiness,
-        setDream
+        setDream,
+        openModal,
+        closeModal
       }
     }
   });

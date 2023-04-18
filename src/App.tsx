@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import MainPage from './pages/MainPage';
 
 import './styles/App.scss';
+import DialogSpace from './components/common/dialogs/DialogSpace';
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -18,6 +19,7 @@ function App() {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Helmet>
       {gameStarted ? <MainPage /> : <HomePage onStart={onStart} />}
+      <DialogSpace />
     </>
   );
 }

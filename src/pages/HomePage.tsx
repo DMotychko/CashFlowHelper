@@ -15,6 +15,7 @@ import { addExpenses } from '../store/expensesSlice';
 import { getCard } from '../helpers/dictionaries';
 import SignInForm from '../components/homePage/SignInForm';
 import { clearState } from '../store/actions/common';
+import { openConfirmModal } from '../helpers/common';
 import type { SignInFormData } from '../types/homePage';
 import type { Card, CardExpense } from '../types/dictionaries';
 import type { Expense, Loan } from '../types';
@@ -80,15 +81,23 @@ const HomePage: React.FunctionComponent<Props> = ({ onStart }) => {
   );
 
   const clearData = useCallback(() => {
-    dispatch(clearState());
+    openConfirmModal(
+      {
+        title: 'Очистити дані гри?',
+        description: 'Очищення даних призведе до безповоротного видалення даних попередньої гри.',
+        confirmLabel: 'Очистити',
+        onConfirm: () => dispatch(clearState())
+      },
+      dispatch
+    );
   }, []);
 
   return (
     <Container fixed className="ch-home-page">
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} className="grid-fields">
         <Grid item xs={4} sm={6} md={6}>
-          <Stack spacing={1}>
-            <Typography variant="h3" textAlign="center" gutterBottom>
+          <Stack spacing={userName ? 5 : 1} alignItems="center">
+            <Typography variant="h3" gutterBottom>
               Вітаємо!
             </Typography>
             {userName ? (
