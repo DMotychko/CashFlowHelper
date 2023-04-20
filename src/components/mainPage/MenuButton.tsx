@@ -11,9 +11,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useDispatch, useSelector } from '../../store/hooks';
 import { toggleIsFired } from '../../store/isFiredSlice';
 import { mapActionToSpeedDialAction } from '../../helpers/renderers';
-import type { Action } from '../../types/common';
+import type { Action } from '../../types/components/mainButton';
 
-const MenuButton: React.FunctionComponent = () => {
+type Props = {onBusinessDrawerOpen: () => void, onApartmentsDrawerOpen: () => void, onCreditDrawerOpen: () => void}
+
+const MenuButton: React.FunctionComponent<Props> = ({onBusinessDrawerOpen, onApartmentsDrawerOpen, onCreditDrawerOpen}) => {
   const isUserFired = useSelector((store) => store.isFired);
   const dispatch = useDispatch();
 
@@ -36,17 +38,20 @@ const MenuButton: React.FunctionComponent = () => {
       {
         title: 'Бізнеси',
         icon: <StoreIcon />,
-        isTooltipOpen: isTouchDevice
+        isTooltipOpen: isTouchDevice,
+        clickHandler: onBusinessDrawerOpen
       },
       {
         title: 'Квартири',
         icon: <ApartmentIcon />,
-        isTooltipOpen: isTouchDevice
+        isTooltipOpen: isTouchDevice,
+        clickHandler: onApartmentsDrawerOpen
       },
       {
         title: 'Банк',
         icon: <AccountBalanceIcon />,
-        isTooltipOpen: isTouchDevice
+        isTooltipOpen: isTouchDevice,
+        clickHandler: onCreditDrawerOpen
       },
       {
         title: "Поповнення в сім'ї",
@@ -62,9 +67,9 @@ const MenuButton: React.FunctionComponent = () => {
   }, [isUserFired]);
 
   return (
-    <SpeedDial className="ch-menu-button" ariaLabel="Меню" icon={<SpeedDialIcon />}>
-      {actions.map((action) => mapActionToSpeedDialAction(action, { key: action.title }))}
-    </SpeedDial>
+      <SpeedDial className="ch-menu-button" ariaLabel="Меню" icon={<SpeedDialIcon />}>
+        {actions.map((action) => mapActionToSpeedDialAction(action, { key: action.title }))}
+      </SpeedDial>
   );
 };
 
