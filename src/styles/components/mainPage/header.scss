@@ -1,9 +1,12 @@
 @import '../../common/mixins';
 
 .ch-header {
-    height: rem(70);
-    .welcome {
-        margin-top: auto;
-        margin-bottom: auto;
+  height: rem(70);
+  .welcome {
+    margin-top: auto;
+    margin-bottom: auto;
+    .user {
+      flex-grow: 1;
     }
+  }
 }

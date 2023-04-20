@@ -10,13 +10,17 @@ import '../styles/pages/mainPage.scss';
 
 const pageName = 'Головна';
 
-const MainPage: React.FunctionComponent = () => {
+type Props = {
+  onExitGame: () => void;
+};
+
+const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
   return (
     <Container className="ch-main-page">
       <Helmet>
         <title>{getTitle(pageName)}</title>
       </Helmet>
-      <Header />
+      <Header onLogoutClick={onExitGame} />
       <MenuButton />
       <IncomeSection />
     </Container>
