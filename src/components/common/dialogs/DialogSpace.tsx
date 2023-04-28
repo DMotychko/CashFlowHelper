@@ -4,9 +4,11 @@ import ConfirmDialog from './ConfirmDialog';
 import { closeModal } from '../../../store/modalsSlice';
 import { ModalName } from '../../../types/modals/modalSpace';
 import type { DialogComponent, ModalPropsMap } from '../../../types/modals/modalSpace';
+import AddBusinessDialog from '../../mainPage/AddBusinessDialog';
 
 const modalsMap: { [name in ModalName]: DialogComponent<ModalPropsMap[name]> } = {
-  [ModalName.confirmModal]: ConfirmDialog
+  [ModalName.confirmModal]: ConfirmDialog,
+  [ModalName.addBusinessModal]: AddBusinessDialog
 };
 
 const DialogSpace: React.FunctionComponent = () => {
@@ -20,9 +22,10 @@ const DialogSpace: React.FunctionComponent = () => {
   return (
     <>
       {modals.map((modal) => {
-        const Component = modalsMap[modal.name];
+        const { name, props } = modal.modal;
+        const Component = modalsMap[name];
 
-        return <Component key={modal.id} removeModal={() => onCloseModal(modal.id)} {...modal.props} />;
+        return <Component key={modal.id} removeModal={() => onCloseModal(modal.id)} {...props} />;
       })}
     </>
   );

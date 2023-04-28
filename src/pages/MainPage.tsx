@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import Container from '@mui/material/Container';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
@@ -16,41 +16,22 @@ import SwipableDrawer from '../components/common/SwipeableDrawer';
 
 import '../styles/pages/mainPage.scss';
 import { DrawerItem } from '../types/components/swipeableDrawer';
-import ModalWindow from '../components/mainPage/ModalWindow';
+import ModalWindow from '../components/mainPage/AddBusinessDialog';
+import { useDispatch } from '../store/hooks';
+import { openModal } from '../store/modalsSlice';
+import { ModalName } from '../types/modals/modalSpace';
 
 const pageName = 'Головна';
-
-const businessActions: DrawerItem[] = [
-  { 
-    icon: <AddBusinessIcon />,
-    label: 'Додати малий бізнес',
-    type: 'action',
-  },
-  {
-    icon: <DomainAddIcon />,
-    label: 'Додати великий бізнес',
-    type: 'action'
-  },
-  {
-    key: 'divider-1',
-    type: 'divider'
-  },
-  {
-    icon: <AddHomeWorkIcon />,
-    label: 'Розширити малий бізнес',
-    type: 'action'
-  }
-] 
 
 const apartmentsActions: DrawerItem[] = [
   {
     icon: <ApartmentIcon />,
-    label: "Купити квартиру",
+    label: 'Купити квартиру',
     type: 'action'
   },
   {
     icon: <AddCardIcon />,
-    label: "Взяти квартиру в кредит",
+    label: 'Взяти квартиру в кредит',
     type: 'action'
   },
   {
@@ -59,15 +40,15 @@ const apartmentsActions: DrawerItem[] = [
   },
   {
     icon: <DomainDisabledIcon />,
-    label: "Продати квартиру",
+    label: 'Продати квартиру',
     type: 'action'
   }
-]
+];
 
 const creditActions: DrawerItem[] = [
   {
     icon: <AddCardIcon />,
-    label: "Взяти кредит в банку",
+    label: 'Взяти кредит в банку',
     type: 'action'
   },
   {
@@ -76,16 +57,17 @@ const creditActions: DrawerItem[] = [
   },
   {
     icon: <CreditScoreIcon />,
-    label: "Повернути кредит в банку",
+    label: 'Повернути кредит в банку',
     type: 'action'
   }
-] 
+];
 
 type Props = {
   onExitGame: () => void;
 };
 
 const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
+  const dispatch = useDispatch();
   const [isBusinessDrawerOpen, setIsBusinessDrawerOpen] = useState(false);
   const [isApartmentsDrawerOpen, setIsApartmentsDrawerOpen] = useState(false);
   const [isCreditDrawerOpen, setIsCreditDrawerOpen] = useState(false);
@@ -99,37 +81,48 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
   const onCreditDrawerClose = useCallback(() => setIsCreditDrawerOpen(false), []);
   const onCreditDrawerOpen = useCallback(() => setIsCreditDrawerOpen(true), []);
 
+  const businessActions = useMemo<DrawerItem[]>(
+    () => [
+      {
+        icon: <AddBusinessIcon />,
+        label: 'Додати малий бізнес',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addBusinessModal, props: {} }))
+      },
+      {
+        icon: <DomainAddIcon />,
+        label: 'Додати великий бізнес',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addBusinessModal, props: { isLargeBusiness: true } }))
+      },
+      {
+        key: 'divider-1',
+        type: 'divider'
+      },
+      {
+        icon: <AddHomeWorkIcon />,
+        label: 'Розширити малий бізнес',
+        type: 'action'
+      }
+    ],
+    [dispatch]
+  );
+
   return (
     <Container className="ch-main-page">
       <Helmet>
         <title>{getTitle(pageName)}</title>
       </Helmet>
-      <SwipableDrawer 
-        onClose={onBusinessDrawerClose} 
-        onOpen={onBusinessDrawerOpen} 
-        isOpen={isBusinessDrawerOpen}
-        items={businessActions}
-      />
-      <SwipableDrawer 
-        onClose={onApartmentsDrawerClose} 
-        onOpen={onApartmentsDrawerOpen} 
-        isOpen={isApartmentsDrawerOpen}
-        items={apartmentsActions}
-      />
-      <SwipableDrawer 
-        onClose={onCreditDrawerClose} 
-        onOpen={onCreditDrawerOpen} 
-        isOpen={isCreditDrawerOpen}
-        items={creditActions}
-      />
-      <MenuButton 
-        onBusinessDrawerOpen={onBusinessDrawerOpen} 
+      <SwipableDrawer onClose={onBusinessDrawerClose} onOpen={onBusinessDrawerOpen} isOpen={isBusinessDrawerOpen} items={businessActions} />
+      <SwipableDrawer onClose={onApartmentsDrawerClose} onOpen={onApartmentsDrawerOpen} isOpen={isApartmentsDrawerOpen} items={apartmentsActions} />
+      <SwipableDrawer onClose={onCreditDrawerClose} onOpen={onCreditDrawerOpen} isOpen={isCreditDrawerOpen} items={creditActions} />
+      <MenuButton
+        onBusinessDrawerOpen={onBusinessDrawerOpen}
         onApartmentsDrawerOpen={onApartmentsDrawerOpen}
         onCreditDrawerOpen={onCreditDrawerOpen}
       />
       <Header onLogoutClick={onExitGame} />
       <IncomeSection />
-      <ModalWindow />
     </Container>
   );
 };

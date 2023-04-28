@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Modal } from '../types/modals/modalSpace';
+import type { Modal, ModalWithId } from '../types/modals/modalSpace';
 import { uniqueId } from 'lodash';
 
 const idPrefix = 'modal';
 
-const initialState: Modal[] = [];
+const initialState: ModalWithId[] = [];
 
 const slice = createSlice({
   name: 'modals',
   initialState,
   reducers: {
     open: {
-      reducer: (state, action: PayloadAction<Modal>) => {
+      reducer: (state, action: PayloadAction<ModalWithId>) => {
         state.push(action.payload);
       },
-      prepare: (modal: Omit<Modal, 'id'>) => ({ payload: { id: uniqueId(idPrefix), ...modal } })
+      prepare: (modal: Modal) => ({ payload: { id: uniqueId(idPrefix), modal } })
     },
     close: {
       reducer: (state, action: PayloadAction<string>) => state.filter((modal) => modal.id !== action.payload),

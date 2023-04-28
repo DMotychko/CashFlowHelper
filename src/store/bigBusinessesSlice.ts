@@ -5,7 +5,7 @@ import type { Business } from '../types';
 const adapter = createEntityAdapter<Business>();
 
 const slice = createSlice({
-  name: 'smallBusinesses',
+  name: 'bigBusinesses',
   initialState: adapter.getInitialState(),
   reducers: {
     add: {
