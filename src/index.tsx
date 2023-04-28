@@ -3,13 +3,17 @@ import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import CSSBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './store/store';
+import PersistLoading from './components/common/PersistLoading';
 
 import './styles/index.scss';
 
 const store = setupStore();
+const persistor = persistStore(store);
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -20,7 +24,9 @@ root.render(
     <React.StrictMode>
       <ThemeProvider theme={theme}>
         <CSSBaseline enableColorScheme />
-        <App />
+        <PersistGate loading={<PersistLoading />} persistor={persistor}>
+          <App />
+        </PersistGate>
       </ThemeProvider>
     </React.StrictMode>
   </Provider>

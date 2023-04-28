@@ -79,9 +79,13 @@ const creditActions: DrawerItem[] = [
     label: "Повернути кредит в банку",
     type: 'action'
   }
-]
+] 
 
-const MainPage: React.FunctionComponent = () => {
+type Props = {
+  onExitGame: () => void;
+};
+
+const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
   const [isBusinessDrawerOpen, setIsBusinessDrawerOpen] = useState(false);
   const [isApartmentsDrawerOpen, setIsApartmentsDrawerOpen] = useState(false);
   const [isCreditDrawerOpen, setIsCreditDrawerOpen] = useState(false);
@@ -100,7 +104,6 @@ const MainPage: React.FunctionComponent = () => {
       <Helmet>
         <title>{getTitle(pageName)}</title>
       </Helmet>
-      <Header />
       <SwipableDrawer 
         onClose={onBusinessDrawerClose} 
         onOpen={onBusinessDrawerOpen} 
@@ -124,6 +127,7 @@ const MainPage: React.FunctionComponent = () => {
         onApartmentsDrawerOpen={onApartmentsDrawerOpen}
         onCreditDrawerOpen={onCreditDrawerOpen}
       />
+      <Header onLogoutClick={onExitGame} />
       <IncomeSection />
       <ModalWindow />
     </Container>
