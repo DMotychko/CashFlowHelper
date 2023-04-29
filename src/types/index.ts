@@ -12,12 +12,9 @@ export type Expense = {
 type IncomeUnit = {
   id: string;
   income: number;
-  price: number;
 };
 
-export type Business = IncomeUnit & {
-  name: string;
-};
+export type Business = IncomeUnit;
 
 export type Loan = {
   id: string;
