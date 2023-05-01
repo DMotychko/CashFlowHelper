@@ -14,11 +14,9 @@ export type ModalPropsMap = {
   [ModalName.addBusinessModal]: AddBusinessModalProps;
 };
 
-export type Modal = {
-  [name in ModalName]: {
-    name: name;
-    props: ModalPropsMap[name];
-  };
-}[ModalName];
+export type Modal<Name extends ModalName> = {
+  name: Name;
+  props: ModalPropsMap[Name];
+};
 
-export type ModalWithId = { id: string; modal: Modal };
+export type ModalWithId<Name extends ModalName> = { id: string } & Modal<Name>;

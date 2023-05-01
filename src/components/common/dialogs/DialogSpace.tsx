@@ -1,14 +1,27 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from '../../../store/hooks';
 import ConfirmDialog from './ConfirmDialog';
+import AddBusinessDialog from '../../mainPage/AddBusinessDialog';
 import { closeModal } from '../../../store/modalsSlice';
 import { ModalName } from '../../../types/modals/modalSpace';
-import type { DialogComponent, ModalPropsMap } from '../../../types/modals/modalSpace';
-import AddBusinessDialog from '../../mainPage/AddBusinessDialog';
+import type { DialogComponent, ModalPropsMap, ModalWithId } from '../../../types/modals/modalSpace';
 
-const modalsMap: { [name in ModalName]: DialogComponent<ModalPropsMap[name]> } = {
-  [ModalName.confirmModal]: ConfirmDialog,
-  [ModalName.addBusinessModal]: AddBusinessDialog
+type ModalRenderer<Name extends ModalName> = (modal: ModalWithId<Name>, onCloseModal: (id: string) => void) => JSX.Element;
+
+const getModalRenderer =
+  <Name extends ModalName>(ModalComponent: DialogComponent<ModalPropsMap[Name]>): ModalRenderer<Name> =>
+  (modal, onCloseModal) => {
+    const props = {
+      key: modal.id,
+      removeModal: () => onCloseModal(modal.id),
+      ...modal.props
+    };
+    return <ModalComponent {...props} />;
+  };
+
+const modalRenderers: { [name in ModalName]: ModalRenderer<name> } = {
+  [ModalName.confirmModal]: getModalRenderer(ConfirmDialog),
+  [ModalName.addBusinessModal]: getModalRenderer(AddBusinessDialog)
 };
 
 const DialogSpace: React.FunctionComponent = () => {
@@ -19,16 +32,7 @@ const DialogSpace: React.FunctionComponent = () => {
     dispatch(closeModal(modalId));
   }, []);
 
-  return (
-    <>
-      {modals.map((modal) => {
-        const { name, props } = modal.modal;
-        const Component = modalsMap[name];
-
-        return <Component key={modal.id} removeModal={() => onCloseModal(modal.id)} {...props} />;
-      })}
-    </>
-  );
+  return <>{modals.map((modal) => modalRenderers[modal.name](modal as never, onCloseModal))}</>;
 };
 
 export default DialogSpace;

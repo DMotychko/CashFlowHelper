@@ -9,17 +9,16 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import DomainDisabledIcon from '@mui/icons-material/DomainDisabled';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import { useDispatch } from '../store/hooks';
 import { getTitle } from '../helpers/common';
 import Header from '../components/mainPage/Header';
 import MenuButton from '../components/mainPage/MenuButton';
 import SwipableDrawer from '../components/common/SwipeableDrawer';
-
-import '../styles/pages/mainPage.scss';
-import { DrawerItem } from '../types/components/swipeableDrawer';
-import ModalWindow from '../components/mainPage/AddBusinessDialog';
-import { useDispatch } from '../store/hooks';
 import { openModal } from '../store/modalsSlice';
 import { ModalName } from '../types/modals/modalSpace';
+import type { DrawerItem } from '../types/components/swipeableDrawer';
+
+import '../styles/pages/mainPage.scss';
 
 const pageName = 'Головна';
 
