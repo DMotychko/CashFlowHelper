@@ -6,12 +6,14 @@ export type DialogComponent<Props = Record<string, never>> = FunctionComponent<P
 
 export enum ModalName {
   confirmModal = 'confirmModal',
-  addBusinessModal = 'addBusinessModal'
+  addBusinessModal = 'addBusinessModal',
+  addApartmentsModal = 'AddApartmentsModal'
 }
 
 export type ModalPropsMap = {
   [ModalName.confirmModal]: ConfirmModalProps;
   [ModalName.addBusinessModal]: AddBusinessModalProps;
+  [ModalName.addApartmentsModal]: never;
 };
 
 export type Modal<Name extends ModalName> = {

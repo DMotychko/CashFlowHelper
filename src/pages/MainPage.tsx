@@ -22,28 +22,6 @@ import '../styles/pages/mainPage.scss';
 
 const pageName = 'Головна';
 
-const apartmentsActions: DrawerItem[] = [
-  {
-    icon: <ApartmentIcon />,
-    label: 'Купити квартиру',
-    type: 'action'
-  },
-  {
-    icon: <AddCardIcon />,
-    label: 'Взяти квартиру в кредит',
-    type: 'action'
-  },
-  {
-    key: 'divider-1',
-    type: 'divider'
-  },
-  {
-    icon: <DomainDisabledIcon />,
-    label: 'Продати квартиру',
-    type: 'action'
-  }
-];
-
 const creditActions: DrawerItem[] = [
   {
     icon: <AddCardIcon />,
@@ -101,6 +79,33 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
       {
         icon: <AddHomeWorkIcon />,
         label: 'Розширити малий бізнес',
+        type: 'action'
+      }
+    ],
+    [dispatch]
+  );
+
+  const apartmentsActions = useMemo<DrawerItem[]>(
+    () => [
+      {
+        icon: <ApartmentIcon />,
+        label: 'Купити квартиру',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addApartmentsModal, props: {} as never }))
+      },
+      {
+        icon: <AddCardIcon />,
+        label: 'Взяти квартиру в кредит',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addApartmentsModal, props: {} as never }))
+      },
+      {
+        key: 'divider-1',
+        type: 'divider'
+      },
+      {
+        icon: <DomainDisabledIcon />,
+        label: 'Продати квартиру',
         type: 'action'
       }
     ],
