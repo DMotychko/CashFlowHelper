@@ -94,9 +94,9 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
     () => [
       {
         icon: <AddCardIcon />,
-        label: 'Взяти кредит в банку',
+        label: 'Взяти борг',
         type: 'action',
-        clickHandler: () => dispatch(openModal({ name: ModalName.addCreditModal, props: { returnOrTakeLoan: true } }))
+        clickHandler: () => dispatch(openModal({ name: ModalName.addDebtModal, props: { returnOrTakeLoan: true } }))
       },
       {
         key: 'divider-1',
@@ -104,9 +104,9 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
       },
       {
         icon: <CreditScoreIcon />,
-        label: 'Повернути кредит в банку',
+        label: 'Повернути борг',
         type: 'action',
-        clickHandler: () => dispatch(openModal({ name: ModalName.addCreditModal, props: { returnOrTakeLoan: false } }))
+        clickHandler: () => dispatch(openModal({ name: ModalName.addDebtModal, props: { returnOrTakeLoan: false } }))
       }
     ],
     [dispatch]

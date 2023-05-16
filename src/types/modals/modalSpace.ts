@@ -1,20 +1,20 @@
 import type { FunctionComponent } from 'react';
 import type { ConfirmModalProps } from './confirmModal';
 import type { AddBusinessModalProps } from './addBusinessModal';
-import { AddCreditModalProps } from './addCreditModal';
+import { AddDebtModalProps } from './addDebtModal';
 
 export type DialogComponent<Props = Record<string, never>> = FunctionComponent<Props & { removeModal: () => void }>;
 
 export enum ModalName {
   confirmModal = 'confirmModal',
   addBusinessModal = 'addBusinessModal',
-  addCreditModal = 'addCreditModal'
+  addDebtModal = 'addDebtModal'
 }
 
 export type ModalPropsMap = {
   [ModalName.confirmModal]: ConfirmModalProps;
   [ModalName.addBusinessModal]: AddBusinessModalProps;
-  [ModalName.addCreditModal]: AddCreditModalProps;
+  [ModalName.addDebtModal]: AddDebtModalProps;
 };
 
 export type Modal<Name extends ModalName> = {

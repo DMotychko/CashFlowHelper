@@ -9,9 +9,9 @@ import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import type { DialogComponent } from '../../types/modals/modalSpace';
-import type { AddCreditModalProps } from '../../types/modals/addCreditModal';
+import type { AddDebtModalProps } from '../../types/modals/addDebtModal';
 
-const AddCreditDialog: DialogComponent<AddCreditModalProps> = ({ removeModal, returnOrTakeLoan }) => {
+const AddDebtDialog: DialogComponent<AddDebtModalProps> = ({ removeModal, returnOrTakeLoan }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   const onModalClose = useCallback(() => setIsModalOpen(false), []);
@@ -30,10 +30,10 @@ const AddCreditDialog: DialogComponent<AddCreditModalProps> = ({ removeModal, re
         fullScreen={fullScreen}
         TransitionProps={{ onExited: removeModal }}
       >
-        <DialogTitle id="alert-dialog-title">{returnOrTakeLoan ? 'Взяти' : 'Повернути'} кредит</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{returnOrTakeLoan ? 'Взяти' : 'Повернути'} борг</DialogTitle>
         <DialogContent>
           <Stack spacing={2}>
-            <TextField label="Введіть суму кредиту" variant="outlined" />
+            <TextField label="Введіть суму" variant="outlined" />
           </Stack>
         </DialogContent>
         <DialogActions>
@@ -47,4 +47,4 @@ const AddCreditDialog: DialogComponent<AddCreditModalProps> = ({ removeModal, re
   );
 };
 
-export default AddCreditDialog;
+export default AddDebtDialog;

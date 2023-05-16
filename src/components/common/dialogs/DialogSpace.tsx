@@ -5,7 +5,7 @@ import AddBusinessDialog from '../../mainPage/AddBusinessDialog';
 import { closeModal } from '../../../store/modalsSlice';
 import { ModalName } from '../../../types/modals/modalSpace';
 import type { DialogComponent, ModalPropsMap, ModalWithId } from '../../../types/modals/modalSpace';
-import AddCreditDialog from '../../mainPage/AddCreditDialog';
+import AddDebtDialog from '../../mainPage/AddDebtDialog';
 
 type ModalRenderer<Name extends ModalName> = (modal: ModalWithId<Name>, onCloseModal: (id: string) => void) => JSX.Element;
 
@@ -23,7 +23,7 @@ const getModalRenderer =
 const modalRenderers: { [name in ModalName]: ModalRenderer<name> } = {
   [ModalName.confirmModal]: getModalRenderer(ConfirmDialog),
   [ModalName.addBusinessModal]: getModalRenderer(AddBusinessDialog),
-  [ModalName.addCreditModal]: getModalRenderer(AddCreditDialog)
+  [ModalName.addDebtModal]: getModalRenderer(AddDebtDialog)
 };
 
 const DialogSpace: React.FunctionComponent = () => {
