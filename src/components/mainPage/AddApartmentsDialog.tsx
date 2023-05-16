@@ -29,12 +29,12 @@ const AddApartmentsDialog: DialogComponent<never> = ({ removeModal }) => {
         fullScreen={fullScreen}
         TransitionProps={{ onExited: removeModal }}
       >
-        <DialogTitle id="alert-dialog-title">Введіть дані квартири</DialogTitle>
+        <DialogTitle id="alert-dialog-title">Додати квартиру</DialogTitle>
         <DialogContent>
           <Stack spacing={2}>
-            <TextField label="Введіть повну вартість квартири" variant="outlined" />
-            <TextField label="Введіть дохід від квартири" variant="outlined" />
-            <TextField label="Введіть кредит на квартиру" variant="outlined" />
+            <TextField label="Повна вартість квартири" variant="outlined" />
+            <TextField label="Дохід від квартири" variant="outlined" />
+            <TextField label="Кредит на квартиру" variant="outlined" />
           </Stack>
         </DialogContent>
         <DialogActions>
