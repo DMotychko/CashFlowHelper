@@ -94,12 +94,6 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
         clickHandler: () => dispatch(openModal({ name: ModalName.addApartmentsModal, props: {} as never }))
       },
       {
-        icon: <AddCardIcon />,
-        label: 'Взяти квартиру в кредит',
-        type: 'action',
-        clickHandler: () => dispatch(openModal({ name: ModalName.addApartmentsModal, props: {} as never }))
-      },
-      {
         key: 'divider-1',
         type: 'divider'
       },
