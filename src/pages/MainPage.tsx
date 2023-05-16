@@ -44,23 +44,6 @@ const apartmentsActions: DrawerItem[] = [
   }
 ];
 
-const creditActions: DrawerItem[] = [
-  {
-    icon: <AddCardIcon />,
-    label: 'Взяти кредит в банку',
-    type: 'action'
-  },
-  {
-    key: 'divider-1',
-    type: 'divider'
-  },
-  {
-    icon: <CreditScoreIcon />,
-    label: 'Повернути кредит в банку',
-    type: 'action'
-  }
-];
-
 type Props = {
   onExitGame: () => void;
 };
@@ -102,6 +85,28 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
         icon: <AddHomeWorkIcon />,
         label: 'Розширити малий бізнес',
         type: 'action'
+      }
+    ],
+    [dispatch]
+  );
+
+  const creditActions = useMemo<DrawerItem[]>(
+    () => [
+      {
+        icon: <AddCardIcon />,
+        label: 'Взяти борг',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addDebtModal, props: { returnOrTakeLoan: true } }))
+      },
+      {
+        key: 'divider-1',
+        type: 'divider'
+      },
+      {
+        icon: <CreditScoreIcon />,
+        label: 'Повернути борг',
+        type: 'action',
+        clickHandler: () => dispatch(openModal({ name: ModalName.addDebtModal, props: { returnOrTakeLoan: false } }))
       }
     ],
     [dispatch]
