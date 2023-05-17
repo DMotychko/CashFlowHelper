@@ -11,6 +11,7 @@ import type { SignInFormData } from '../../types/homePage';
 import type { DreamOption, JobOption } from '../../types/dictionaries';
 
 import '../../styles/components/homePage/signInForm.scss';
+import ControlledTextField from '../common/forms/ControlledTextField';
 
 const getDreamOptionLabel = (dream: DreamOption) => `${dream.title} - ${formatMoney(dream.price)}`;
 const getJobOptionLabel = (job: JobOption) => job.title;
@@ -53,22 +54,13 @@ const SignInForm: React.FunctionComponent<Props> = ({ onSubmit }) => {
 
   return (
     <Stack component="form" noValidate onSubmit={handleSubmit(onSubmit)} spacing={0} className="ch-sign-in-form">
-      <Controller
+      <ControlledTextField
         name="userName"
         control={control}
         rules={{ required: "Ім'я є обов'язковим" }}
-        render={({ field: { ref, ...field }, fieldState: { error } }) => (
-          <TextField
-            {...field}
-            inputRef={ref}
-            label="Введіть ім'я"
-            variant="outlined"
-            className="field"
-            error={!!error}
-            helperText={error?.message ?? ' '}
-            required
-          />
-        )}
+        label="Введіть ім'я"
+        className="field"
+        required
       />
       <Controller
         name="dream"

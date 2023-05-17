@@ -70,7 +70,7 @@ const MainPage: React.FunctionComponent<Props> = ({ onExitGame }) => {
         icon: <DomainAddIcon />,
         label: 'Додати великий бізнес',
         type: 'action',
-        clickHandler: () => dispatch(openModal({ name: ModalName.addBusinessModal, props: { isLargeBusiness: true } }))
+        clickHandler: () => dispatch(openModal({ name: ModalName.addBusinessModal, props: { isBigBusiness: true } }))
       },
       {
         key: 'divider-1',

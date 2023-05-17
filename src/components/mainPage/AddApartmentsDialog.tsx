@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import DialogForm from '../common/dialogs/DialogForm';
 import type { DialogComponent } from '../../types/modals/modalSpace';
 
 const AddApartmentsDialog: DialogComponent<never> = ({ removeModal }) => {
@@ -20,7 +20,7 @@ const AddApartmentsDialog: DialogComponent<never> = ({ removeModal }) => {
 
   return (
     <>
-      <Dialog
+      <DialogForm
         open={isModalOpen}
         onClose={onModalClose}
         aria-labelledby="alert-dialog-title"
@@ -43,7 +43,7 @@ const AddApartmentsDialog: DialogComponent<never> = ({ removeModal }) => {
             Додати
           </Button>
         </DialogActions>
-      </Dialog>
+      </DialogForm>
     </>
   );
 };
