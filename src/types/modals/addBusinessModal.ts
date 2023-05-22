@@ -1,3 +1,3 @@
 export type AddBusinessModalProps = {
-  isLargeBusiness?: boolean;
+  isBigBusiness?: boolean;
 };

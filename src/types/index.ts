@@ -11,6 +11,7 @@ export type Expense = {
 
 type IncomeUnit = {
   id: string;
+  price: number;
   income: number;
 };
 

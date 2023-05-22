@@ -38,10 +38,12 @@ test('User income should be calculated correctly', () => {
       entities: {
         1: {
           id: uniqueId(),
+          price: 0,
           income: 200
         },
         2: {
           id: uniqueId(),
+          price: 0,
           income: 400
         }
       }
@@ -51,10 +53,12 @@ test('User income should be calculated correctly', () => {
       entities: {
         1: {
           id: uniqueId(),
+          price: 0,
           income: 2500
         },
         2: {
           id: uniqueId(),
+          price: 0,
           income: 5000
         }
       }
@@ -65,11 +69,13 @@ test('User income should be calculated correctly', () => {
         1: {
           id: uniqueId(),
           income: 750,
+          price: 0,
           type: 'K1'
         },
         2: {
           id: uniqueId(),
           income: 1200,
+          price: 0,
           type: 'K2'
         }
       }
@@ -108,10 +114,12 @@ test('User income should be calculated correctly (user is fired)', () => {
       entities: {
         1: {
           id: uniqueId(),
+          price: 0,
           income: 200
         },
         2: {
           id: uniqueId(),
+          price: 0,
           income: 400
         }
       }
@@ -121,10 +129,12 @@ test('User income should be calculated correctly (user is fired)', () => {
       entities: {
         1: {
           id: uniqueId(),
+          price: 0,
           income: 2500
         },
         2: {
           id: uniqueId(),
+          price: 0,
           income: 5000
         }
       }
@@ -135,11 +145,13 @@ test('User income should be calculated correctly (user is fired)', () => {
         1: {
           id: uniqueId(),
           income: 750,
+          price: 0,
           type: 'K1'
         },
         2: {
           id: uniqueId(),
           income: 1200,
+          price: 0,
           type: 'K2'
         }
       }

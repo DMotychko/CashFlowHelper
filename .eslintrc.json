@@ -10,6 +10,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": ["*.test.tsx", "*.test.ts"],
   "plugins": ["react", "@typescript-eslint"],
   "settings": {
     "react": {
